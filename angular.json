@@ -49,9 +49,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/vendor/vendor.min.css",
+              "src/assets/css/plugins/plugins.min.css",
+              "src/assets/css/style.min.css",
+              "src/assets/css/personal.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/vendor/vendor.min.js",
+              "src/assets/js/plugins/plugins.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/personal.js"
+            ]
           },
           "configurations": {
             "production": {
