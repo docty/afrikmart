@@ -1,25 +1,93 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, OnInit, AfterViewInit } from '@angular/core';
 declare var $: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit{
 
-  	constructor() { }
+  	heroSlider: any = [
+      {
+        intro: 'Proud African Clothe',
+        title: 'Wear it Simple & Nice', 
+        message: 'Browse through our collection to get your best designs for that event', 
+        src: 'banner1',
+        avatar: 'assets/images/slider/image_3.jpg'
+      },
+      {
+        intro: 'Wear your day',
+        title: 'African made Clothes', 
+        message: 'Great colors bring motivation', 
+        src: 'banner2',
+        avatar: 'assets/images/slider/image_2.jpg'
+      }
+    ];
+
+    ShortBanner: any = [
+      {
+        title: 'Office Wear', 
+        price: 'GHC 250', 
+        src: 'office',
+        avatar: 'assets/images/banner/banner-3.jpg'
+      },
+      {
+        title: 'Church Wear', 
+        price: 'GHC 270', 
+        src: 'church',
+        avatar: 'assets/images/banner/banner-4.jpg'
+      },
+      {
+        title: 'Wedding Wear', 
+        price: 'GHC 170', 
+        src: 'wedding',
+        avatar: 'assets/images/banner/banner-5.jpg'
+      }
+    ];
+
+    blog: any = [
+      {
+        date: 'June 20, 2020', 
+        title: 'How to reduce cost on clothes', 
+        src: 'office',
+        avatar: 'assets/images/blog/blog-1.jpg'
+      },
+      {
+        date: 'July 20, 2020', 
+        title: 'Which clothes match your event', 
+        src: 'church',
+        avatar: 'assets/images/blog/blog-2.jpg'
+      },
+      {
+        date: 'August 20, 2020', 
+        title: 'Buy the looks and smiles', 
+        src: 'wedding',
+        avatar: 'assets/images/blog/blog-3.jpg'
+      }
+    ];
+
+    constructor() { }
 
   	ngOnInit(): void {
-  	    $('.hero-slider-active-2').slick({
+        console.log(this.heroSlider);
+  	    
+    }
+
+     ngAfterViewInit(){
+       this.defaultInitialise();
+     }
+
+    defaultInitialise(){
+        $('.hero-slider-active-1').slick({
           slidesToShow: 1,
           slidesToScroll: 1,
           fade: true,
           loop: true,
-          dots: false,
+          dots: true,
           arrows: true,
           prevArrow: '<span class="slider-icon-1-prev"><i class="icon-arrow-left"></i></span>',
           nextArrow: '<span class="slider-icon-1-next"><i class="icon-arrow-right"></i></span>',
-        });	
+        });  
 
         $('.product-slider-active-2').slick({
           slidesToShow: 3,
@@ -93,5 +161,6 @@ export class HomeComponent implements OnInit {
               }
           ]
         });
+
     }
 }

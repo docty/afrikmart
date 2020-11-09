@@ -783,7 +783,7 @@
     $(function() {
         sliderrange.slider({
             range: true,
-            min: 16,
+            sideeda: 16,
             max: 400,
             values: [0, 300],
             slide: function(event, ui) {
