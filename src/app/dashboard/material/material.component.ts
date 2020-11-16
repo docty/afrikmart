@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {MaterialService} from '../../service/material.service';
 import {CartService} from '../../service/cart.service';
 import Swal from '../../../assets/libs/sweetalert2/sweetalert2.min';
@@ -13,9 +14,16 @@ export class MaterialComponent implements OnInit {
 
   dataValue: any;
   uri= '';
-  constructor(private materialService: MaterialService, private cartService: CartService) { }
+  id: string;
+  private sub: any;
+  
+  constructor(private route: ActivatedRoute, private materialService: MaterialService, private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params.details;
+    });
+    console.log(this.id);
     this.uri = this.materialService.getURI();
     
   	this.materialService.index().subscribe(

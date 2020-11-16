@@ -1,4 +1,5 @@
 import {Component, OnInit, AfterViewInit } from '@angular/core';
+import {HomeService} from '../../service/home.service';
 declare var $: any;
 
 @Component({
@@ -7,43 +8,11 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit, AfterViewInit{
 
-  	heroSlider: any = [
-      {
-        intro: 'Proud African Clothe',
-        title: 'Wear it Simple & Nice', 
-        message: 'Browse through our collection to get your best designs for that event', 
-        src: 'banner1',
-        avatar: 'assets/images/slider/image_3.jpg'
-      },
-      {
-        intro: 'Wear your day',
-        title: 'African made Clothes', 
-        message: 'Great colors bring motivation', 
-        src: 'banner2',
-        avatar: 'assets/images/slider/image_2.jpg'
-      }
-    ];
+  	url : any;
 
-    ShortBanner: any = [
-      {
-        title: 'Office Wear', 
-        price: 'GHC 250', 
-        src: 'office',
-        avatar: 'assets/images/banner/banner-3.jpg'
-      },
-      {
-        title: 'Church Wear', 
-        price: 'GHC 270', 
-        src: 'church',
-        avatar: 'assets/images/banner/banner-4.jpg'
-      },
-      {
-        title: 'Wedding Wear', 
-        price: 'GHC 170', 
-        src: 'wedding',
-        avatar: 'assets/images/banner/banner-5.jpg'
-      }
-    ];
+    heroSlider: any;
+
+    shortBanner: any;
 
     blog: any = [
       {
@@ -66,15 +35,21 @@ export class HomeComponent implements OnInit, AfterViewInit{
       }
     ];
 
-    constructor() { }
+    constructor(private homeService: HomeService) { }
 
   	ngOnInit(): void {
-        console.log(this.heroSlider);
-  	    
-    }
+      this.url = this.homeService.getURI();
+       this.homeService.homePage().subscribe(
+         (data:any) => {
+           this.heroSlider = data.slider;
+           this.shortBanner = data.banner;
+           setTimeout(()=>{this.defaultInitialise();},1); 
+        });
 
+    }
+ 
      ngAfterViewInit(){
-       this.defaultInitialise();
+       
      }
 
     defaultInitialise(){

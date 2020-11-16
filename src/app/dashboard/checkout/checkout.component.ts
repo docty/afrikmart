@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {CartService} from '../../service/cart.service';
 import {CheckoutService} from '../../service/checkout.service';
+import Swal from '../../../assets/libs/sweetalert2/sweetalert2.min';
 
 declare var $: any;
 @Component({
@@ -25,7 +27,7 @@ export class CheckoutComponent implements OnInit {
       country: 'Ghana',
       message: ''
   }
-  constructor(private cartService: CartService, private checkoutService: CheckoutService) { }
+  constructor(private router: Router, private cartService: CartService, private checkoutService: CheckoutService) { }
 
   ngOnInit(): void {
     this.dataValue = this.cartService.getCart();
@@ -66,7 +68,8 @@ export class CheckoutComponent implements OnInit {
           
           this.checkoutService.storeOrder(this.order).subscribe(
             (item) => {
-              alert('Your Order has been placed \n We will communicate via mobile number provided \n Thank you');
+              Swal.fire({text:'Your Order has been placed. \n We will communicate via mobile number provided. \n Thank you', confirmButtonColor:"#5b73e8"})
+              this.router.navigateByUrl('/');
             });
       });
      

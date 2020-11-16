@@ -3,48 +3,28 @@
 <!-- Start Carousel -->
 <div class="slider-area bg-gray">
     <div class="hero-slider-active-1 hero-slider-pt-1 nav-style-1 dot-style-1">
-        <div class="single-hero-slider single-animation-wrap">
+        <div class="single-hero-slider single-animation-wrap" *ngFor="let values of heroSlider">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
-                            <h4 class="animated">{{heroSlider[0].intro}}</h4>
-                            <h1 class="animated">{{heroSlider[0].title}}</h1>
-                            <p class="animated">{{heroSlider[0].message}}</p>
+                            <h4 class="animated">{{values.intro}}</h4>
+                            <h1 class="animated">{{values.title}}</h1>
+                            <p class="animated">{{values.message}}</p>
                             <div class="btn-style-1">
-                                <a class="animated btn-1-padding-1" [routerLink]="['/product', heroSlider[0].src]">Explore Now</a>
+                                <a class="animated btn-1-padding-1" [routerLink]="['/product', values.src]">Explore Now</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="hero-slider-img-1 slider-animated-1">
-                            <img class="animated" src="{{heroSlider[0].avatar}}" alt="">
+                            <img class="animated" src="{{url}}slider/{{values.avatar}}" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="single-hero-slider single-animation-wrap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
-                            <h4 class="animated">{{heroSlider[1].intro}}</h4>
-                            <h1 class="animated">{{heroSlider[1].title}}</h1>
-                            <p class="animated">{{heroSlider[1].message}}</p>
-                            <div class="btn-style-1">
-                                <a class="animated btn-1-padding-1" [routerLink]="['/product', heroSlider[1].src]">Explore Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="hero-slider-img-1 slider-animated-1">
-                            <img class="animated" src="{{heroSlider[1].avatar}}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 </div>
 <!-- End Carousel  -->
@@ -106,15 +86,15 @@
 <div class="banner-area padding-10-row-col pb-105">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of ShortBanner">
+            <div class="col-lg-4 col-md-6 col-12" *ngFor="let item of shortBanner">
                 <div class="banner-wrap mb-10">
                     <div class="banner-img banner-img-border banner-img-zoom">
-                        <a [routerLink]="['/product', item.src]"><img src="{{item.avatar}}" alt=""></a>
+                        <a [routerLink]="['/product', item.src]"><img src="{{url}}banner/{{item.avatar}}" alt=""></a>
                     </div>
                     <div class="banner-content-3">
                         <h2>{{item.title}}</h2>
                         <span>Start</span>
-                        <h3>{{item.price}}</h3>
+                        <h3>&#8373; {{item.price}}</h3>
                         <div class="btn-style-4">
                             <a [routerLink]="['/product', item.src]">Shop now <i class="icon-arrow-right"></i></a>
                         </div>
@@ -128,7 +108,7 @@
 <!-- End Area Banner  -->        
 
 <!-- Start Best Sellers  -->
-<div class="product-area pb-110">
+<!-- <div class="product-area pb-110">
     <div class="container">
         <div class="section-title-tab-wrap border-bottom-3 mb-30 pb-15">
             <div class="section-title-3">
@@ -136,7 +116,7 @@
             </div>
             <div class="tab-style-3 nav">
                 <a class="active" href="#product-1" data-toggle="tab">Wedding </a>
-                <a href="#product-2" data-toggle="tab"> Dinner</a>
+                <a href="#product-2" data-toggle="tab">Dinner</a>
                 <a href="#product-3" data-toggle="tab">Church </a>
                 <a href="#product-4" data-toggle="tab">Office </a>
                 <a href="#product-5" data-toggle="tab">Casual </a>
@@ -793,11 +773,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End Best Sellers  -->
 
 <!-- Start Second Banner  -->
-<div class="banner-area pb-85">
+<!-- <div class="banner-area pb-85">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -836,11 +816,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End Second Banner  -->
 
 <!-- Start Recommendation  -->
-<div class="product-area pb-110">
+<!-- <div class="product-area pb-110">
     <div class="container">
         <div class="section-title-tab-wrap border-bottom-5 align-items-inherit mb-50">
             <div class="section-title-3">
@@ -2577,11 +2557,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End Recommendation  -->
 
 <!-- Start Blog News -->
-<div class="blog-area bg-gray-3 pt-115 pb-80">
+<!-- <div class="blog-area bg-gray-3 pt-115 pb-80">
     <div class="container">
         <div class="section-title-tab-wrap mb-35">
             <div class="section-title-3">
@@ -2610,7 +2590,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- End Blog News  -->
 
 <app-footer></app-footer>

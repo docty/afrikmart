@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {MaterialService} from '../../service/material.service';
 import {CartService} from '../../service/cart.service';
+import {ReviewService} from '../../service/review.service';
 import Swal from '../../../assets/libs/sweetalert2/sweetalert2.min';
 declare var $: any;
 @Component({
@@ -14,13 +15,21 @@ export class MaterialshowComponent implements OnInit, AfterViewInit {
   id: string;
   private sub: any;
   dataValue: any;
+  reviewData: any;
   imageCategory: any;
   tag: any;
   uri= '';
   rateStar = [];
   rateStarGray = [];
 
-  constructor(private route: ActivatedRoute, private materialService: MaterialService, private cartService: CartService) { }
+  review = {
+      name: '',
+      email: '',
+      comment: '',
+      productId: ''
+  }
+  constructor(private route: ActivatedRoute, private materialService: MaterialService, 
+      private cartService: CartService, private reviewService: ReviewService) { }
 
   ngOnInit(): void {
     this.uri = this.materialService.getURI();
@@ -33,6 +42,10 @@ export class MaterialshowComponent implements OnInit, AfterViewInit {
             this.dataValue = data;
             this.imageCategory = data.image.split('<>');
             this.tag = data.tag.split(' ');
+            this.reviewService.show(data.productId).subscribe(
+              (results)=>{
+                this.reviewData = results;
+              });
         }
     );
     this.rateStars();
@@ -43,7 +56,7 @@ export class MaterialshowComponent implements OnInit, AfterViewInit {
     let quantity =  $('.cart-plus-minus-box').val();
     var results =  Object.assign({},  values, {'quantity' : quantity});
     this.cartService.storeCart(results);
-    console.log(results);
+     
     Swal.fire({text:'Material added to cart', confirmButtonColor:"#5b73e8"})
   }
 
@@ -54,6 +67,15 @@ export class MaterialshowComponent implements OnInit, AfterViewInit {
   rateStars(){
      this.rateStar.length = Math.floor((Math.random()*5)+1);
      this.rateStarGray.length = 5 - this.rateStar.length;
+    }
+
+
+    onSubmitReview(){
+        this.review.productId = this.dataValue.productId;
+        this.reviewService.store(this.review).subscribe(
+          (result) => {
+              Swal.fire({text:'Comment has been submitted', confirmButtonColor:"#5b73e8"})  
+        });
     }
 
   jqueryInitialise(){
