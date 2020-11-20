@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit{
        this.homeService.homePage().subscribe(
          (data:any) => {
            this.heroSlider = data.slider;
+           
            this.shortBanner = data.banner;
            setTimeout(()=>{this.defaultInitialise();},1); 
         });

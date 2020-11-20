@@ -6,8 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StyleService {
 
-  uri = 'http://127.0.0.1:8000/api';
   
+
+  // uri = 'http://127.0.0.1:8000/api';
+  uri = 'https://afrikmart.herokuapp.com/api';
+   
 
   constructor(private httpClient: HttpClient) { }
 

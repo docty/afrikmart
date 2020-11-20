@@ -29,7 +29,16 @@ const routes: Routes = [
     path: 'about', component : AboutComponent
   },
   {
-    path: 'material/:details', component : MaterialComponent
+    path: 'material/all', component : MaterialComponent
+  },
+  {
+    path: 'material/GTP', component : MaterialComponent
+  },
+  {
+    path: 'material/Woodin', component : MaterialComponent
+  },
+  {
+    path: 'material/Holland', component : MaterialComponent
   },
   {
     path: 'material/:details/show', component : MaterialshowComponent

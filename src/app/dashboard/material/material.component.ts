@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {MaterialService} from '../../service/material.service';
 import {CartService} from '../../service/cart.service';
 import Swal from '../../../assets/libs/sweetalert2/sweetalert2.min';
@@ -17,17 +17,14 @@ export class MaterialComponent implements OnInit {
   id: string;
   private sub: any;
   
-  constructor(private route: ActivatedRoute, private materialService: MaterialService, private cartService: CartService) { }
+  constructor(private router: Router, private materialService: MaterialService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params => {
-      this.id = params.details;
-    });
-    console.log(this.id);
+    this.sub = this.router.url.split('/').pop();
     this.uri = this.materialService.getURI();
     
-  	this.materialService.index().subscribe(
-  		data => {this.dataValue = data;}
+  	this.materialService.index(this.sub).subscribe(
+  		data => {this.dataValue = data; console.log(this.dataValue);}
   	);
     this.jqueryInitialise();
   }
