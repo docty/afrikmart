@@ -7,11 +7,10 @@ import { HttpClient } from '@angular/common/http';
 export class HomeService {
 
   
-	// private defaultURL = 'http://127.0.0.1:8000/images/';
-	// private uri = 'http://127.0.0.1:8000/api';
+	private defaultURL = 'http://127.0.0.1:8000/images/';
+	private uri = 'http://127.0.0.1:8000/api';
 
-  uri = 'https://afrikmart.herokuapp.com/api';
-  private defaultURL = 'https://afrikmart.herokuapp.com/images/';
+  
 
     constructor(private httpClient: HttpClient) { }
 

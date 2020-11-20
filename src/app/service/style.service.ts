@@ -8,8 +8,8 @@ export class StyleService {
 
   
 
-  // uri = 'http://127.0.0.1:8000/api';
-  uri = 'https://afrikmart.herokuapp.com/api';
+  private uri = 'http://127.0.0.1:8000/api';
+   
     
 
   constructor(private httpClient: HttpClient) { }

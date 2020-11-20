@@ -8,9 +8,9 @@ export class CartService {
   constructor() { }
   
 
-  // defaultURL = 'http://127.0.0.1:8000/images/';
+  private defaultURL = 'http://127.0.0.1:8000/images/';
 
-  private defaultURL = 'https://afrikmart.herokuapp.com/images/';
+  
   cartData = [];
 
   storeCart(item){
