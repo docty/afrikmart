@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MaterialService {
 
-    private uri = 'http://127.0.0.1:8000/api';
-    private defaultURL = 'http://127.0.0.1:8000/images/';
+    private uri = 'https://afrikmart.herokuapp.com/api';
+    private defaultURL = 'https://afrikmart.herokuapp.com/images/';
 
   
 

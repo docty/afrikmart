@@ -8,7 +8,7 @@ export class CheckoutService {
 
   
 
-  private uri = 'http://127.0.0.1:8000/api';
+  private uri = 'https://afrikmart.herokuapp.com/api';
   
   
    
