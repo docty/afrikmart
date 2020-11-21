@@ -25,26 +25,26 @@
                                             <a [routerLink]="['/material', item.urlId, 'show']">
                                                 <img src="{{uri}}/materials/{{item.image.split('<>')[0]}}" alt="">
                                             </a>
-                                            <div class="product-action-2 tooltip-style-2">
+                                            <!-- <div class="product-action-2 tooltip-style-2">
                                                 <button title="Quick View" data-toggle="modal" data-target="#exampleModal"><i class="icon-size-fullscreen icons"></i></button>
                                                  
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="product-content-wrap-2 text-center">
-                                             <div class="product-rating-wrap">
+                                             <!-- <div class="product-rating-wrap">
                                                 Sales 
                                                 <span>(20)</span>
-                                            </div>  
+                                            </div>   -->
                                             <h3><a [routerLink]="['/product', item.urlId]">{{item.materialName}}</a></h3>
                                             <div class="product-price-2">
                                                 <span>&#8373;  {{item.price}}</span>
                                             </div>
                                         </div>
                                         <div class="product-content-wrap-2 product-content-position text-center">
-                                            <div class="product-rating-wrap">
+                                            <!-- <div class="product-rating-wrap">
                                                 Sales 
                                                 <span>(20)</span>
-                                            </div> 
+                                            </div>  -->
                                             <h3><a [routerLink]="['/product', item.urlId]">{{item.materialName}}</a></h3>
                                             <div class="product-price-2">
                                                 <span>&#8373;  {{item.price}}</span>
@@ -70,7 +70,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="sidebar-wrapper sidebar-wrapper-mrg-right">
-                    <div class="sidebar-widget mb-40">
+                    <!-- <div class="sidebar-widget mb-40">
                         <h4 class="sidebar-widget-title">Search </h4>
                         <div class="sidebar-search">
                             <form class="sidebar-search-form" action="#">
@@ -80,18 +80,18 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="sidebar-widget shop-sidebar-border mb-35 pt-40">
                         <h4 class="sidebar-widget-title">Materials </h4>
                         <div class="shop-catigory">
                             <ul>
-                                <li><a href="shop.html">GTP</a></li>
-                                <li><a href="shop.html">Woodin</a></li>
-                                <li><a href="shop.html">Holland </a></li>
+                                <li><a [routerLink]="['/material', 'GTP']">GTP</a></li>
+                                <li><a [routerLink]="['/material', 'Woodin']">Woodin</a></li>
+                                <li><a [routerLink]="['/material', 'Holland']">Holland </a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="sidebar-widget shop-sidebar-border mb-35 pt-40">
+                    <!-- <div class="sidebar-widget shop-sidebar-border mb-35 pt-40">
                         <h4 class="sidebar-widget-title">Categories </h4>
                         <div class="shop-catigory">
                             <ul>
@@ -101,8 +101,8 @@
                                 <li><a href="shop.html">Dinner </a></li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="sidebar-widget shop-sidebar-border mb-40 pt-40">
+                    </div> -->
+                    <!-- <div class="sidebar-widget shop-sidebar-border mb-40 pt-40">
                         <h4 class="sidebar-widget-title">Price Filter </h4>
                         <div class="price-filter">
                             <span>Range: GHC 10.00 - 1000.00 </span>
@@ -114,9 +114,9 @@
                                 <button type="button">Filter</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     
-                    <div class="sidebar-widget shop-sidebar-border pt-40">
+                    <!-- <div class="sidebar-widget shop-sidebar-border pt-40">
                         <h4 class="sidebar-widget-title">Popular Tags</h4>
                         <div class="tag-wrap sidebar-widget-tag">
                             <a href="#">Clothing</a>
@@ -125,7 +125,7 @@
                             <a href="#">Women</a>
                             <a href="#">Fashion</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
