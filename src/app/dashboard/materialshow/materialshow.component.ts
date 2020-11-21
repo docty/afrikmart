@@ -42,14 +42,19 @@ export class MaterialshowComponent implements OnInit, AfterViewInit {
             this.dataValue = data;
             this.imageCategory = data.image.split('<>');
             this.tag = data.tag.split(' ');
-            this.reviewService.show(data.productId).subscribe(
-              (results)=>{
-                this.reviewData = results;
-              });
+            this.showReview();
         }
     );
     this.rateStars();
     
+  }
+
+
+  showReview(){
+    this.reviewService.show(this.dataValue.productId).subscribe(
+      (results)=>{
+        this.reviewData = results;
+      });
   }
 
   addToCart(values){
@@ -74,7 +79,9 @@ export class MaterialshowComponent implements OnInit, AfterViewInit {
         this.review.productId = this.dataValue.productId;
         this.reviewService.store(this.review).subscribe(
           (result) => {
-              Swal.fire({text:'Comment has been submitted', confirmButtonColor:"#5b73e8"})  
+              Swal.fire({text:'Comment has been submitted', confirmButtonColor:"#5b73e8"});
+              this.review.comment = '';  this.review.email = '';  this.review.name = ''; this.review.productId = '';    
+              this.showReview();
         });
     }
 
