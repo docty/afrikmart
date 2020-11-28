@@ -42,6 +42,24 @@ const routes: Routes = [
   },
   {
     path: 'material/:details/show', component : MaterialshowComponent
+  },
+  {
+    path: 'style/all', component : StyleComponent
+  },
+  {
+    path: 'style/Engagement', component : StyleComponent
+  },
+  {
+    path: 'style/Wedding', component : StyleComponent
+  },
+  {
+    path: 'style/Dinner', component : StyleComponent
+  },
+  {
+    path: 'style/Office', component : StyleComponent
+  },
+  {
+    path: 'style/:details/show', component : StyleshowComponent
   }
   
  ];

@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import {Router } from '@angular/router';
 import {StyleService} from '../../service/style.service';
 import {CartService} from '../../service/cart.service';
 
@@ -11,12 +12,19 @@ declare var $: any;
 export class StyleComponent implements OnInit {
 
    dataValue: any;
-  constructor(private styleService: StyleService, private cartService: CartService) { }
+   uri= '';
+   private sub: any;
+
+  constructor(private router: Router, private styleService: StyleService, private cartService: CartService) { }
 
   ngOnInit(): void {
-      this.styleService.index().subscribe(
-          data => {this.dataValue = data; console.log(data);}
-      );
+    this.sub = this.router.url.split('/').pop();
+
+    this.uri = this.styleService.getURI();
+
+    this.styleService.index(this.sub).subscribe(
+        data => {this.dataValue = data; console.log(data);}
+    );
     this.jqueryInitialise();
   }
 
