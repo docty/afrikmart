@@ -1,10 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {StyleService} from '../../service/style.service';
-
+import {CartService} from '../../service/cart.service';
+import {ReviewService} from '../../service/review.service';
+import Swal from '../../../assets/libs/sweetalert2/sweetalert2.min';
 declare var $: any;
 
-declare var $: any;
 @Component({
   selector: 'app-styleshow',
   templateUrl: './styleshow.component.html',
@@ -15,11 +16,25 @@ export class StyleshowComponent implements OnInit {
   id: string;
   private sub: any;
   dataValue: any;
+  reviewData: any;
   imageCategory: any;
+  tag: any;
+  uri= '';
+  rateStar = [];
+  rateStarGray = [];
 
-  constructor(private route: ActivatedRoute, private styleService: StyleService) { }
+  review = {
+      name: '',
+      email: '',
+      comment: '',
+      productId: ''
+  }
+
+  constructor(private route: ActivatedRoute, private styleService: StyleService,
+      private cartService: CartService, private reviewService: ReviewService) { }
 
   ngOnInit(): void {
+    this.uri = this.styleService.getURI();
     this.sub = this.route.params.subscribe(params => {
       this.id = params.details;
     });
@@ -27,6 +42,7 @@ export class StyleshowComponent implements OnInit {
     this.styleService.show(this.id).subscribe(
       (data: any) => {
         this.dataValue = data;
+        
         this.imageCategory = data.image.split('<>');
          }
     );
@@ -34,6 +50,37 @@ export class StyleshowComponent implements OnInit {
     
   	
   }
+
+  showReview(){
+    this.reviewService.show(this.dataValue.productId).subscribe(
+      (results)=>{
+        this.reviewData = results;
+      });
+  }
+
+  addToCart(values){
+    let quantity =  $('.cart-plus-minus-box').val();
+    var results =  Object.assign({},  values, {'quantity' : quantity});
+    this.cartService.storeCart(results);
+     
+    Swal.fire({text:'Material added to cart', confirmButtonColor:"#5b73e8"})
+  }
+
+  rateStars(){
+     this.rateStar.length = Math.floor((Math.random()*5)+1);
+     this.rateStarGray.length = 5 - this.rateStar.length;
+    }
+
+
+    onSubmitReview(){
+        this.review.productId = this.dataValue.productId;
+        this.reviewService.store(this.review).subscribe(
+          (result) => {
+              Swal.fire({text:'Comment has been submitted', confirmButtonColor:"#5b73e8"});
+              this.review.comment = '';  this.review.email = '';  this.review.name = ''; this.review.productId = '';    
+              this.showReview();
+        });
+    }
 
   ngAfterViewInit(): void{
       this.jqueryInitialise();
