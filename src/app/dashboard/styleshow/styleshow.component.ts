@@ -42,14 +42,16 @@ export class StyleshowComponent implements OnInit {
     this.styleService.show(this.id).subscribe(
       (data: any) => {
         this.dataValue = data;
-        
         this.imageCategory = data.image.split('<>');
+        this.tag = data.tag.split(' ');
+            this.showReview();
          }
     );
-    
-    
-  	
+    this.rateStars();
+     
   }
+
+   
 
   showReview(){
     this.reviewService.show(this.dataValue.productId).subscribe(
