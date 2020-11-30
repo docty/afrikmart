@@ -8,7 +8,7 @@ export class CartService {
   constructor() { }
   
 
-  private defaultURL = 'http://127.0.0.1:8000/images/';
+  private defaultURL = 'http://127.0.0.1:8000/images';
 
   
   cartData = [];

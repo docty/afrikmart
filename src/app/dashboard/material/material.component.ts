@@ -29,7 +29,7 @@ export class MaterialComponent implements OnInit {
   }
 
   addToCart(values){
-    var results =  Object.assign({},  values, {'quantity' : 1});
+    var results =  Object.assign({},  values, {'quantity' : 1, 'location': 'materials'});
     this.cartService.storeCart(results);
     Swal.fire({text:'Material added to cart', confirmButtonColor:"#5b73e8"})
   }

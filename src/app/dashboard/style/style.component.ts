@@ -30,7 +30,9 @@ export class StyleComponent implements OnInit {
 
 
   addToCart(values){
-    this.cartService.storeCart(values);
+    var results =  Object.assign({},  values, {'quantity' : 1, 'location': 'styles'});
+    this.cartService.storeCart(results);
+    
   }
 
   jqueryInitialise(){
