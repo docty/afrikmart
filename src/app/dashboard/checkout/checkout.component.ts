@@ -14,6 +14,7 @@ export class CheckoutComponent implements OnInit {
 
   dataValue: any;
   order =  [];
+  totalAmount = 0;
   data: any = {
       firstName: '',
       lastName: '',
@@ -31,7 +32,11 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataValue = this.cartService.getCart();
-    console.log(this.dataValue);
+    
+    for (var i = 0; i < this.dataValue.length;  i++) {
+        this.totalAmount =   this.totalAmount + this.dataValue[i].price*this.dataValue[i].quantity;
+    }
+    console.log(this.totalAmount);
   	$('.checkout-click1').on('click', function(e) {
         e.preventDefault();
         $('.checkout-login-info').slideToggle(900);
