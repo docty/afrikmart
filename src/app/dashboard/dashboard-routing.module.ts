@@ -14,12 +14,6 @@ const routes: Routes = [
     path: '', component : HomeComponent, pathMatch: 'full'
   },
   {
-    path: 'style/:details', component : StyleComponent
-  },
-  {
-    path: 'style/:details/show', component : StyleshowComponent
-  },
-  {
     path: 'cart', component : CartComponent
   },
   {

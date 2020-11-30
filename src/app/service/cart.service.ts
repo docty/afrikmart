@@ -8,8 +8,9 @@ export class CartService {
   constructor() { }
   
 
+ 
   private defaultURL = 'https://afrikmart.herokuapp.com/images/';
-
+ 
   
   cartData = [];
 

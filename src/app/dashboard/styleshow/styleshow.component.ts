@@ -42,14 +42,16 @@ export class StyleshowComponent implements OnInit {
     this.styleService.show(this.id).subscribe(
       (data: any) => {
         this.dataValue = data;
-        
         this.imageCategory = data.image.split('<>');
+        this.tag = data.tag.split(' ');
+            this.showReview();
          }
     );
-    
-    
-  	
+    this.rateStars();
+     
   }
+
+   
 
   showReview(){
     this.reviewService.show(this.dataValue.productId).subscribe(
@@ -60,7 +62,7 @@ export class StyleshowComponent implements OnInit {
 
   addToCart(values){
     let quantity =  $('.cart-plus-minus-box').val();
-    var results =  Object.assign({},  values, {'quantity' : quantity});
+    var results =  Object.assign({},  values, {'quantity' : quantity, 'location': 'styles'});
     this.cartService.storeCart(results);
      
     Swal.fire({text:'Material added to cart', confirmButtonColor:"#5b73e8"})

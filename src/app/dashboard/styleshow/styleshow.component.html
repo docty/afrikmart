@@ -7,7 +7,7 @@
                 <li>
                     <a [routerLink]="['/']">Home</a>
                 </li>
-                <li class="active">product details</li>
+                <li class="active">style details</li>
             </ul>
         </div>
     </div>
@@ -106,11 +106,11 @@
                         </ul>
                     </div>
                     <div class="pro-details-action-wrap">
+                        <!-- <div class="pro-details-add-to-cart">
+                            <a title="Add to Cart" (click)="addToCart(dataValue)"> </a>
+                        </div> -->
                         <div class="pro-details-add-to-cart">
-                            <a title="Add to Cart" (click)="addToCart(dataValue)">Add To Cart </a>
-                        </div>
-                        <div class="pro-details-add-to-cart">
-                            <a title="Add to Cart" data-toggle="modal" data-target="#exampleModal">Sow Now </a>
+                            <a title="Add to Cart" data-toggle="modal" data-target="#exampleModal">Add To Cart</a>
                         </div>
                         <!-- <div class="pro-details-action">
                             <a title="Add to Wishlist" href="#"><i class="icon-heart"></i></a>
@@ -542,14 +542,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="product-details-content quickview-content">
-                            <h2>What do you want to do ? </h2>
+                            <h2>Choose what to do </h2>
                             <div class="pro-details-action-wrap">
                                 <div class="pro-details-add-to-cart">
-                                    <a title="Add to Cart" href="#">Upload your design </a>
+                                    <a title="Add to Cart" (click)="addToCart(dataValue)" data-dismiss="modal">Use Default Material</a>
                                 </div>
                                 <div class="pro-details-add-to-cart">
-                                    <a title="Add to Cart" [routerLink]="['/style', 'all']" data-dismiss="modal">Pick system design </a>
+                                    <a title="Add to Cart" [routerLink]="['/style', 'all']" data-dismiss="modal">Choose System Material </a>
                                 </div>
+                                <div class="pro-details-add-to-cart">
+                                    <a title="use your own material" href="#" data-dismiss="modal">Use Personal Material </a>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
