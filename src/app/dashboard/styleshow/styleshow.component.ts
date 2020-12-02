@@ -61,8 +61,7 @@ export class StyleshowComponent implements OnInit {
   }
 
   addToCart(values){
-    let quantity =  $('.cart-plus-minus-box').val();
-    var results =  Object.assign({},  values, {'quantity' : quantity, 'location': 'styles'});
+    var results =  Object.assign({},  values, {'quantity' : 1, 'location': 'styles'});
     this.cartService.storeCart(results);
      
     Swal.fire({text:'Material added to cart', confirmButtonColor:"#5b73e8"})
